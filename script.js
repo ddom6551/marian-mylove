@@ -1,11 +1,6 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbzCScHdC9A89s6sbf5en8SCjfspdM9mlnNWMn9_LjqkgJqPGoOgYEk1fomBJsZebKxjVg/exec";
+const scriptURL = "https://script.google.com/macros/s/PASTE_YOUR_WEB_APP_URL_HERE/exec"; // Replace this with your actual script URL
 const form = document.getElementById("grievance-form");
 const formBox = document.getElementById("form-box");
-
-// Helper: ensure scriptURL is set
-if (scriptURL.includes("PASTE_YOUR_WEB_APP_URL_HERE")) {
-  console.warn("Warning: Replace scriptURL placeholder with your Google Apps Script Web App URL.");
-}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,4 +27,3 @@ form.addEventListener("submit", (e) => {
       alert("Something went wrong. Please check your scriptURL and network connection.");
       console.error("Submission Error:", error);
     });
-});
