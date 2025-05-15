@@ -1,4 +1,3 @@
-<!-- form.html (Form Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,15 +15,16 @@
         <textarea name="message" placeholder="Message" rows="6" required></textarea>
 
         <label for="mood">Mood:</label>
-        <div class="slider-group">
-          <span>💔</span>
-          <input type="range" name="mood" min="1" max="5" value="3" />
-          <span>😊</span>
-        </div>
+        <select name="mood" required>
+          <option value="" disabled selected>Select mood</option>
+          <option value="Sad">😢 Sad</option>
+          <option value="Okay">😐 Okay</option>
+          <option value="Happy">😊 Happy</option>
+        </select>
 
         <label for="severity">How serious is it?</label>
         <select name="severity" required>
-          <option value="" disabled>Select seriousness</option>
+          <option value="" disabled selected>Select seriousness</option>
           <option value="Mild">🌸 Mild</option>
           <option value="Medium">🍂 Medium</option>
           <option value="Major">🔥 Major</option>
