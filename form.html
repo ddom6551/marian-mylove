@@ -15,28 +15,58 @@
           <input id="title" type="text" name="title" placeholder="Title" required />
         </div>
         <div class="input-wrapper">
-          <textarea id="description" name="message" placeholder="Message" rows="6" required></textarea>
+          <textarea id="description" name="description" placeholder="Message" rows="6" required></textarea>
         </div>
-        <label for="mood">Mood:</label>
+
+        <label for="mood"><strong>Mood:</strong></label>
         <select name="mood" required>
           <option value="" disabled selected>Select mood</option>
-          <option value="Sad">😢 Sad</option>
-          <option value="Okay">😐 Okay</option>
-          <option value="Happy">😊 Happy</option>
+          <option value="💔 - really really hurt">💔 - really really hurt</option>
+          <option value="😭 - really sad">😭 - really sad</option>
+          <option value="😢 - sad">😢 - sad</option>
+          <option value="😞 - overthinking">😞 - overthinking</option>
+          <option value="😑 - bruh">😑 - bruh</option>
+          <option value="😒 - annoyed">😒 - annoyed</option>
+          <option value="☹️ - unhappy">☹️ - unhappy</option>
+          <option value="😠 - angry">😠 - angry</option>
+          <option value="😡 - really angry">😡 - really angry</option>
+          <option value="🤬 - you want me to kms">🤬 - you want me to kms</option>
         </select>
 
-        <label for="severity">How serious is it?</label>
+        <label for="severity"><strong>How serious is it?</strong></label>
         <select name="severity" required>
           <option value="" disabled selected>Select seriousness</option>
-          <option value="Mild">🌸 Mild</option>
-          <option value="Medium">🍂 Medium</option>
-          <option value="Major">🔥 Major</option>
+          <option value="just want to clear something up">just want to clear something up</option>
+          <option value="small thing">small thing</option>
+          <option value="mild">mild</option>
+          <option value="kinda serious">kinda serious</option>
+          <option value="serious">serious</option>
+          <option value="very serious">very serious</option>
+          <option value="disaster level (yung mapapa break ka na)">disaster level (yung mapapa break ka na)</option>
         </select>
+
+        <label for="response"><strong>How would you like me to respond?</strong></label>
+        <select name="response" id="response" required onchange="toggleOther(this)">
+          <option value="" disabled selected>Select response method</option>
+          <option value="gmail">Gmail</option>
+          <option value="text">Text</option>
+          <option value="call">Call</option>
+          <option value="other">Other (specify)</option>
+        </select>
+        <div class="input-wrapper" id="other-response-box" style="display:none;">
+          <input type="text" name="otherResponse" placeholder="Please specify..." />
+        </div>
 
         <button type="submit">Send</button>
       </form>
     </div>
   </div>
+  <script>
+    function toggleOther(select) {
+      const box = document.getElementById('other-response-box');
+      box.style.display = select.value === 'other' ? 'block' : 'none';
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
