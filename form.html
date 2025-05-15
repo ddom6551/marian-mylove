@@ -11,9 +11,12 @@
     <div class="container improved-form" id="form-box">
       <h2>What’s on your mind?</h2>
       <form id="grievance-form">
-        <input id="title" type="text" name="title" placeholder="Title" required style="text-align:center"/>
-        <textarea id="description" name="message" placeholder="Message" rows="6" required style="text-align:center"></textarea>
-
+        <div class="input-wrapper">
+          <input id="title" type="text" name="title" placeholder="Title" required />
+        </div>
+        <div class="input-wrapper">
+          <textarea id="description" name="message" placeholder="Message" rows="6" required></textarea>
+        </div>
         <label for="mood">Mood:</label>
         <select name="mood" required>
           <option value="" disabled selected>Select mood</option>
