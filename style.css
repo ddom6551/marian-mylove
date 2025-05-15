@@ -182,4 +182,13 @@ form button:hover {
   z-index: 10;
   top: 10px;
   left: 10px;
+
+  .welcome-box.improved.solid-border {
+  border: 3px solid #b63763;
+}
+
+/* Optional: change font */
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
 }
