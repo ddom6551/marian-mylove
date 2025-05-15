@@ -1,4 +1,3 @@
-<!-- style.css -->
 body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #ffeaf2; color: #333; }
 
 body.landing { background: url('marian-landing.jpg') no-repeat center center fixed; background-size: cover; position: relative; height: 100vh; overflow: hidden; }
@@ -15,7 +14,16 @@ body.form.thankyou-mode { background: url('marian-thankyou.jpg') no-repeat cente
 
 .container.improved-form { background: rgba(255,240,246,0.9); padding: 2em; border-radius: 25px; max-width: 600px; width: 90%; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-form input, form textarea, form select, form input[type="range"] { width: 100%; margin-bottom: 1em; padding: 0.75em; border: 1px solid #ccc; border-radius: 12px; font-size: 1em; background: #fffafd; text-align: center; }
+form input, form textarea, form select, form input[type="range"] {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 1em;
+  background: #fffafd;
+  text-align: center;
+}
 
 .slider-group { display: flex; align-items: center; justify-content: space-between; gap: 1em; margin-bottom: 1em; padding: 0 0.5em; }
 
