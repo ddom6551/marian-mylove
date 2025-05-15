@@ -2,21 +2,25 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbzCScHdC9A89s6sbf5en8
 const form = document.getElementById("grievance-form");
 const formBox = document.getElementById("form-box");
 
+// Helper: ensure scriptURL is set
+if (scriptURL.includes("PASTE_YOUR_WEB_APP_URL_HERE")) {
+  console.warn("Warning: Replace scriptURL placeholder with your Google Apps Script Web App URL.");
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = Object.fromEntries(new FormData(form).entries());
   fetch(scriptURL, {
     method: "POST",
     body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
   })
+    .then(response => {
+      if (!response.ok) throw new Error(`Status ${response.status}`);
+      return response.text();
+    })
     .then(() => {
-      // Switch background image
       document.body.classList.add("thankyou-mode");
-
-      // Replace form with thank you message
       formBox.innerHTML = `
         <div id="thank-you-message">
           <h2>💖 Thank you for sharing, my love.</h2>
@@ -25,7 +29,7 @@ form.addEventListener("submit", (e) => {
       `;
     })
     .catch((error) => {
-      alert("Something went wrong. Please try again later.");
-      console.error("Error:", error);
+      alert("Something went wrong. Please check your scriptURL and network connection.");
+      console.error("Submission Error:", error);
     });
 });
