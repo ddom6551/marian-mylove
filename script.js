@@ -1,32 +1,35 @@
+const moods = ["💔 - really really hurt","😭 - really sad","😢 - sad","😞 - overthinking","😑 - bruh","☹️ - unhappy","😒 - annoyed",
+               "😠 - angry","😡 - really angry","🤬 - you want me to kms"];
 const form = document.getElementById('grievance-form');
-const formBox = document.getElementById("form-box");
+const moodInput = document.getElementById('mood');
+const moodLabel = document.getElementById('mood-label');
+const severityInput = document.getElementById('severity');
+const severityLabel = document.getElementById('severity-label');
+const responseSelect = document.getElementById('response');
+const otherInput = document.getElementById('other');
+const thankYou = document.getElementById('thank-you');
+const newBtn = document.getElementById('new');
 
-form.addEventListener('submit', e => {
+// Initialize
+moodLabel.textContent = moods[moodInput.value];
+severityLabel.textContent = severityInput.value;
+
+moodInput.addEventListener('change', ()=> moodLabel.textContent = moods[moodInput.value]);
+severityInput.addEventListener('change', ()=> severityLabel.textContent = severityInput.value);
+responseSelect.addEventListener('change', ()=> otherInput.style.display = responseSelect.value==='other'?'block':'none');
+
+form.addEventListener('submit', e=>{
   e.preventDefault();
-  const other = form.response.value === "other" ? form.otherResponse.value : "";
-  const data = {
-    title: document.getElementById('title').value,
-    description: document.getElementById('description').value,
-    mood: form.mood.value,
-    severity: form.severity.value,
-    response: form.response.value === "other" ? other : form.response.value,
-    timestamp: new Date().toLocaleString()
-  };
-  fetch('https://script.google.com/macros/s/AKfycbzCScHdC9A89s6sbf5en8SCjfspdM9mlnNWMn9_LjqkgJqPGoOgYEk1fomBJsZebKxjVg/exec', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  }).then(() => {
-    document.body.classList.add("thankyou-mode");
-    formBox.innerHTML = `
-      <div id="thank-you-message">
-        <div class="heart-sparkle"></div>
-        <div class="heart-sparkle" style="top: 50px; left: 80%;"></div>
-        <div class="heart-sparkle" style="top: 80%; left: 40%;"></div>
-        <h2>💖 Thank you for sharing, my love.</h2>
-        <p>I promise to listen, understand, and grow with you.</p>
-      </div>
-    `;
-    document.getElementById("thank-you-message").style.display = 'block';
-  });
+  const data = { title:form.title.value, description:form.description.value,
+    mood:moods[moodInput.value], severity:severityInput.value,
+    response:responseSelect.value==='other'?otherInput.value:responseSelect.value,
+    timestamp:new Date().toLocaleString() };
+  fetch('https://script.google.com/macros/s/AKfycbzCScHdC9A89s6sbf5en8SCjfspdM9mlnNWMn9_LjqkgJqPGoOgYEk1fomBJsZebKxjVg/exec',{
+    method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+  }).then(()=>{ form.classList.add('hidden'); thankYou.classList.remove('hidden'); });
+});
+
+newBtn.addEventListener('click',()=>{
+  form.reset(); moodLabel.textContent=moods[0]; severityLabel.textContent=severityInput.options[0].text;
+  otherInput.style.display='none'; thankYou.classList.add('hidden'); form.classList.remove('hidden');
 });
