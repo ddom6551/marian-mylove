@@ -1,8 +1,9 @@
+<!-- form.html (Form Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Marian's Message</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,13 +16,18 @@
         <textarea name="message" placeholder="Message" rows="6" required></textarea>
 
         <label for="mood">Mood:</label>
-        <select name="mood">
-          <option value="" disabled selected>Select your mood</option>
-        </select>
+        <div class="slider-group">
+          <span>💔</span>
+          <input type="range" name="mood" min="1" max="5" value="3" />
+          <span>😊</span>
+        </div>
 
         <label for="severity">How serious is it?</label>
-        <select name="severity">
-          <option value="" disabled selected>Select seriousness</option>
+        <select name="severity" required>
+          <option value="" disabled>Select seriousness</option>
+          <option value="Mild">🌸 Mild</option>
+          <option value="Medium">🍂 Medium</option>
+          <option value="Major">🔥 Major</option>
         </select>
 
         <button type="submit">Send</button>
