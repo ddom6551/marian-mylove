@@ -1,147 +1,31 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #ffeaf2;
-  color: #333;
+<!-- style.css -->
+body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #ffeaf2; color: #333; }
+
+body.landing { background: url('marian-landing.jpg') no-repeat center center fixed; background-size: cover; position: relative; height: 100vh; overflow: hidden; }
+body.form { background: url('marian-form.jpg') no-repeat center center fixed; background-size: cover; min-height: 100vh; }
+body.form.thankyou-mode { background: url('marian-thankyou.jpg') no-repeat center center fixed; background-size: cover; }
+
+.overlay, .form-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 1em; }
+
+.welcome-box.improved { background: rgba(255,192,203,0.85); border: 3px dashed #e59bb0; border-radius: 30px; padding: 3em; max-width: 700px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+.highlight { background-color: #fff0f5; padding: 0.2em 0.5em; border-radius: 10px; color: #d6336c; font-size: 1.8em; }
+.proceed-button { display: inline-block; background: white; color: #d6336c; border: none; border-radius: 12px; padding: 0.75em 1.5em; text-decoration: none; font-weight: bold; transition: 0.3s ease; }
+.proceed-button:hover { background: #fce4ec; }
+
+.container.improved-form { background: rgba(255,240,246,0.9); padding: 2em; border-radius: 25px; max-width: 600px; width: 90%; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+form input, form textarea, form select, form input[type="range"] { width: 100%; margin-bottom: 1em; padding: 0.75em; border: 1px solid #ccc; border-radius: 12px; font-size: 1em; background: #fffafd; text-align: center; }
+
+.slider-group { display: flex; align-items: center; justify-content: space-between; gap: 1em; margin-bottom: 1em; padding: 0 0.5em; }
+
+form button { background: #f06292; color: white; border: none; padding: 0.75em 1.5em; border-radius: 12px; font-size: 1em; cursor: pointer; transition: background 0.3s ease; }
+form button:hover { background: #ec407a; }
+
+@media (max-width:600px) {
+  .welcome-box.improved, .container.improved-form { padding: 1.5em; width: 90%; }
+  form input, form textarea, form select { font-size: 0.9em; }
 }
 
-body.landing {
-  background: url('marian-landing.jpg') no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-body.form {
-  background: url('marian-form.jpg') no-repeat center center fixed;
-  background-size: cover;
-  min-height: 100vh;
-}
-
-body.form.thankyou-mode {
-  background: url('marian-thankyou.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-}
-
-.welcome-box.improved {
-  background: rgba(255, 192, 203, 0.85);
-  border: 3px dashed #e59bb0;
-  border-radius: 30px;
-  padding: 3em;
-  max-width: 700px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-.highlight {
-  background-color: #fff0f5;
-  padding: 0.2em 0.5em;
-  border-radius: 10px;
-  color: #d6336c;
-  font-size: 1.8em;
-}
-
-.proceed-button {
-  display: inline-block;
-  background: white;
-  color: #d6336c;
-  border: none;
-  border-radius: 12px;
-  padding: 0.75em 1.5em;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.proceed-button:hover {
-  background: #fce4ec;
-}
-
-.form-overlay {
-  backdrop-filter: blur(4px);
-  padding: 1em;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container.improved-form {
-  background: rgba(255, 240, 246, 0.9);
-  padding: 2em;
-  border-radius: 25px;
-  max-width: 600px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-form input, form textarea, form select {
-  width: 100%;
-  margin-bottom: 1em;
-  padding: 0.75em;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  font-size: 1em;
-}
-
-form button {
-  background: #f06292;
-  color: white;
-  border: none;
-  padding: 0.75em 1.5em;
-  border-radius: 12px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-form button:hover {
-  background: #ec407a;
-}
-
-@media (max-width: 600px) {
-  .welcome-box.improved {
-    padding: 1.5em;
-  }
-
-  .container.improved-form {
-    padding: 1.5em;
-    width: 90%;
-  }
-
-  form input, form textarea, form select {
-    font-size: 0.9em;
-  }
-}
-
-/* Thank You message */
-#thank-you-message {
-  display: none;
-  text-align: center;
-  background: rgba(255, 240, 246, 0.9);
-  border-radius: 25px;
-  padding: 2em;
-  max-width: 500px;
-  margin: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-#thank-you-message h2 {
-  color: #d6336c;
-  margin-bottom: 0.5em;
-}
+#thank-you-message { display: none; text-align: center; background: rgba(255,240,246,0.9); border-radius: 25px; padding: 2em; max-width: 500px; margin: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+#thank-you-message h2 { color: #d6336c; margin-bottom: 0.5em; }
